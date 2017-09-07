@@ -2,7 +2,6 @@ import angular from 'angular';
 //import angularMeteor from 'angular-meteor';
 //import { Meteor } from 'meteor/meteor';
 //import uiRouter from 'angular-ui-router';
-import { soundManager } from 'soundmanager2';
 //import { Items } from '../../../api/items';
 
 
@@ -16,13 +15,6 @@ export default angular.module('player', [])
   var sounf = null;
   var current, data, direction, events, filter, lastPod, lastSound, pods, volume;
   console.log("soundManager status: soundManager is", soundManager);
-  soundManager.setup({
-    //flashVersion: 9,
-    useHTML5Audio: true,
-    preferFlash: false,
-    debugMode: false,
-    //url: 'node_modules/Soundmanager2/swf/'
-  });
   pods = [];
   lastPod = {};
   lastSound = null;

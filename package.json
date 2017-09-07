@@ -6,7 +6,7 @@
     "test:watch": "meteor test --driver-package sanjo:jasmine"
   },
   "dependencies": {
-    "angular": "^1.6.5",
+    "angular": "^1.6.6",
     "angular-meteor": "^1.3.12",
     "angular-ui-router": "^0.2.18",
     "feedparser": "^2.2.1",

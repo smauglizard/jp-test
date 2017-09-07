@@ -39,11 +39,11 @@ class PlayItem {
    //   }
    // });
     console.log("$scope.item is", $scope.item);
-    $scope.podClick = function(e) {
-        if (e.target.tagName !== 'A' && e.target.parentNode.tagName !== 'A') {
-          return player.podClick($scope.item);
-        }
-      };
+    $scope.podClick = function(e, item) {
+      if (e.target.tagName !== 'A' && e.target.parentNode.tagName !== 'A') {
+        player.podClick(item);
+      }
+    };
      // return scope.$on('$destroy', function() {
      //   return scope.pod.displayed = false;
      // });

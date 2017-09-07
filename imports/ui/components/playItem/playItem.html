@@ -1,10 +1,9 @@
-The item your selected is: {{ playItem.itemId }}
+
 <!--<div class="container-fluid">
   <div class="row">
     <div class="col-md-12">-->
-<div class="sm2-bar-ui fixed full-width" ng-click="podClick($event)">
-    <h3>{{playItem.podClick}}</h3>
-    <h4>{{item.title}}</h4>
+<div class="sm2-bar-ui fixed full-width" ng-click="podClick($event, playItem.item)">
+    <h3>{{playItem.item.title}}</h3>
            <!-- <div class="pod-date">
              <pre>{{playItem.item.pubDate}}</pre>
            </div> -->
