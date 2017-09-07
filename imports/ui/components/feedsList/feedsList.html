@@ -1,0 +1,36 @@
+<party-add></party-add>
+<ul>
+      <li ng-repeat="feed in feedsList.feeds">
+           <div class="row">
+            <div class="col-sm-8">
+              <h3 class="feed-name">
+               <h3 class="feed-name">
+                <a ui-sref="itemsDetails({ feedId: feed._id })">
+                  {{feed.name}}
+                  Item 
+              </a>
+               </h3>
+               </h3>
+               <img ng-src="{{feed.image}}" height="50" width="50"/>
+                 <h4>{{feed.title}}</h4> 
+                 <p>{{feed.url}}</p>
+                 <p>{{feed.pubdate}}</p>
+             <!-- </h3> -->
+             </div>
+            </div>
+            <!--<div class="col-sm-4"> -->
+             <!-- <party-remove feed="feed">remove feed</party-remove> -->
+             
+            <!--</div> -->
+            </li>
+        </ul>
+
+<!--<ul>
+  <li ng-repeat="party in partiesList.parties">
+    <a ui-sref="partyDetails({ partyId: party._id })">
+      {{party.name}}
+    </a>
+    <p>{{party.url}}</p>
+    <party-remove party="party"></party-remove>
+  </li>
+</ul> -->
