@@ -1,16 +1,16 @@
 import angular from 'angular';
-import angularMeteor from 'angular-meteor';
-import { Meteor } from 'meteor/meteor';
+//import angularMeteor from 'angular-meteor';
+//import { Meteor } from 'meteor/meteor';
 //import uiRouter from 'angular-ui-router';
-import { soundManager } from 'soundmanager2';
+//import { soundManager } from 'soundmanager2';
 //import { Items } from '../../../api/items';
 
 
 //class Player {
 //  constructor($reactive, $timeout) {
 //    'ngInject';
-export default angular.module('player', [])
-.factory('player', function() {
+export default angular.module('player')
+.factory('player', function($timeout, $http, $window) {
   //return {
   var current, data, direction, events, filter, lastPod, lastSound, pods, volume;
   console.log("soundManager status: soundManager is", soundManager);
@@ -171,60 +171,77 @@ export default angular.module('player', [])
       return $window.scrollTo($window.scrollX, $window.scrollY + 1);
     });
   };
-
-  getPods = function() {
-    return pods;
-  };
-  getPod = function() {
-      return lastPod;
-  };
-  podClick = function(item) {
-      console.log('podClick');
-    if (!item) {
-        return skip(null);
-    } else {
-        return togglePlay(item);
-    }
-  };
-  setVolume = function(vol) {
-      volume = vol;
-      return soundManager.setVolume(volume);
-  };
-  getVolume = function() {
-      return volume;
-  };
-  setPosition = function(pos) {
-      var nMsecOffset;
-      nMsecOffset = Math.floor(pos * getDurationEstimate(lastSound));
-      if (!isNaN(nMsecOffset)) {
-        nMsecOffset = Math.min(nMsecOffset, lastSound.duration);
+  
+  return {
+      getPods: function() {
+        return pods;
+      },
+      getPod: function() {
+        return lastPod;
+      },
+      podClick: function(pod) {
+        console.log('podClick');
+        if (!pod) {
+          return skip(null);
+        } else {
+          return togglePlay(pod);
+        }
+      },
+      setVolume: function(vol) {
+        volume = vol;
+        return soundManager.setVolume(volume);
+      },
+      getVolume: function() {
+        return volume;
+      },
+      setPosition: function(pos) {
+        var nMsecOffset;
+        nMsecOffset = Math.floor(pos * getDurationEstimate(lastSound));
+        if (!isNaN(nMsecOffset)) {
+          nMsecOffset = Math.min(nMsecOffset, lastSound.duration);
+        }
+        if (!isNaN(nMsecOffset)) {
+          lastSound.setPosition(nMsecOffset);
+        }
+        return lastSound.resume();
+      },
+      setFeedSlug: function(slug) {
+        return data.feedSlug = slug;
+      },
+      setDirection: function(dir) {
+        database.setDirection({
+          value: dir
+        });
+        direction = database.getDirection();
+        sortPods();
+        return scrollABit();
+      },
+      getDirection: function() {
+        if (direction && direction.value) {
+          return direction.value;
+        }
+        return 'DESC';
+      },
+      setFilter: function(newFilter) {
+        database.setFilter({
+          value: newFilter
+        });
+        filter = database.getFilter();
+        return scrollABit();
+      },
+      getFilter: function() {
+        if (filter && filter.value) {
+          return filter.value;
+        }
+        return 'unlistened';
+      },
+      scrollABit: function() {
+        return scrollABit();
       }
-      if (!isNaN(nMsecOffset)) {
-        lastSound.setPosition(nMsecOffset);
-      }
-      return lastSound.resume();
-   };
-    setFeedSlug = function(slug) {
-      return data.feedSlug = slug;
     };
-
-   getDirection = function() {
-      if (direction && direction.value) {
-        return direction.value;
-      }
-      return 'DESC';
-    };
-
-  getFilter = function() {
-      if (filter && filter.value) {
-        return filter.value;
-      }
-      return 'unlistened';
-    };
-    scrollABit = function() {
-      return scrollABit();
-    };
- //}
+  //});
+  
+   //}
 });
  // } // constructor close  
 //}
