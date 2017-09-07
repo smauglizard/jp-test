@@ -2,16 +2,18 @@ import angular from 'angular';
 //import angularMeteor from 'angular-meteor';
 //import { Meteor } from 'meteor/meteor';
 //import uiRouter from 'angular-ui-router';
-//import { soundManager } from 'soundmanager2';
+import { soundManager } from 'soundmanager2';
 //import { Items } from '../../../api/items';
 
 
 //class Player {
 //  constructor($reactive, $timeout) {
 //    'ngInject';
-export default angular.module('player')
-.factory('player', function($timeout, $http, $window) {
+export default angular.module('player', [])
+.factory('player', function($timeout) {
   //return {
+  'ngInject';
+  var sounf = null;
   var current, data, direction, events, filter, lastPod, lastSound, pods, volume;
   console.log("soundManager status: soundManager is", soundManager);
   soundManager.setup({
