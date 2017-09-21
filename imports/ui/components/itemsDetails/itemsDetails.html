@@ -1,5 +1,6 @@
 <ul> 
-    <li ng-repeat ="item in itemsDetails.items">
+   <li ng-repeat ="item in itemsDetails.items"> 
+   <!-- <li dir-paginate="item in itemsDetails.items | itemsPerPage: itemsDetails.perPage" total-items="itemsDetails.itemsCount" current-page="itemsDetails.page"> --> 
         {{item}} 
       <div class="col-sm-8"> 
         <h3 class="item-name">
@@ -15,4 +16,5 @@
     </div>
    </li>
  </ul>
+ <!-- <dir-pagination-controls on-page-change="itemsDetails.pageChanged(newPageNumber)"></dir-pagination-controls> -->
 

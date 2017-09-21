@@ -1,6 +1,7 @@
 <party-add></party-add>
 <ul>
       <li ng-repeat="feed in feedsList.feeds">
+      <!-- <li dir-paginate="feed in feedsList.feeds | itemsPerPage: feedsList.perPage" total-items="feedsList.feedsCount"> --> 
            <div class="row">
             <div class="col-sm-8">
               <h3 class="feed-name">
@@ -22,8 +23,11 @@
              <!-- <party-remove feed="feed">remove feed</party-remove> -->
              
             <!--</div> -->
-            </li>
-        </ul>
+      </li>
+</ul>
+
+<!-- <dir-pagination-controls on-page-change="feedsList.pageChanged(newPageNumber)"></dir-pagination-controls> -->
+
 
 <!--<ul>
   <li ng-repeat="party in partiesList.parties">

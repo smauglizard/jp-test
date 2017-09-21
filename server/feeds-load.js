@@ -15,7 +15,7 @@ Meteor.startup(function() {
     options = {
       url: feed,
       headers: {
-        'User-Agent': 'my podcatcher'
+        'User-Agent': 'podcatcher'
       }
     };
     isfeed = Feeds.findOne({
@@ -90,7 +90,7 @@ Meteor.startup(function() {
     console.log("feeds.feedslist.length is....." + feeds.feedsList.length);
 
     fetchNext = function() {
-      if (counter++ < 2) {
+      if (counter++ < feeds.feedsList.length) {
         console.log('fetching', counter, '/', feeds.feedsList.length);
         fetchFeed(feeds.feedsList[counter - 1], fetchNext);
       } else {
@@ -98,7 +98,7 @@ Meteor.startup(function() {
       }
     };
     feed_test = Feeds.find({}).count();
-    if(!feed_test > 0){
+    if(feed_test < 250){
       fetchNext();
     } else {
         console.log("feeds already fetched...");

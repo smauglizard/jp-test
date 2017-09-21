@@ -12,45 +12,36 @@ class ItemsDetails {
     $reactive(this).attach($scope);
 
     this.feedId = $stateParams.feedId;
-    this.sound = null;
+    //this.sound = null;
+   // this.perPage = 3;
+   // this.page = 1;
+   // this.searchText = '';
 
+   // this.subscribe('items', function() {
+   //   return [{
+   //     limit: parseInt(this.getReactively('perPage')),
+   //     skip: ((parseInt(this.getReactively('page'))) - 1) * (parseInt(this.getReactively('perPage'))),
+   //     feedId: this.feedId
+   //   }, this.getReactively('searchText') ];
+   // });
+ 
     this.helpers({
       items() {
         return Items.find({
           feedId: $stateParams.feedId
         });
       }
+      //,
+      //itemsCount() {
+      //  return Counts.get('numberOfItems');
+      //}
+
     });
   }
 
-//  save() {
-//    Parties.update({
-//      _id: this.party._id
-//    }, {
-//      $set: {
-//        name: this.party.name,
-//        description: this.party.description
-//      }
-//    }, (error) => {
-//      if (error) {
-//        console.log('Oops, unable to update the party...');
-//      } else {
-//        console.log('Done!');
-//      }
-//    });
-//  }
-//  play(url) {
-//    this.sound = soundManager.createSound({
-//      id: url,
-//      url: url
-//    });
-//    this.sound.play();
-//  }
-//  stop() {
-//    if(this.sound) {
-//      this.sound.stop(); 
-//    }
-//  }
+  //pageChanged(newPage) {
+  //  this.page = newPage;
+  //}
 }
 
 const name = 'itemsDetails';
