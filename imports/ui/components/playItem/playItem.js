@@ -2,7 +2,7 @@ import angular from 'angular';
 import angularMeteor from 'angular-meteor';
 import { Meteor } from 'meteor/meteor';
 import uiRouter from 'angular-ui-router';
-//import { name as Player } from '../../../../client/services/player.service';
+import podControls from '../podControls/podControls';
 import player from '../player/player.js';
 import { Items } from '../../../api/items';
 import template from './playItem.html';
@@ -31,13 +31,6 @@ class PlayItem {
         return Items.findOne({_id: $scope.url}); 
       }
     });
-   // Items.findOne({_id: this.url}, function(err, resp){
-   //   if(err){
-   //     console.log("findOne error is", err);
-   //   } else {
-   //     $scope.item = resp;
-   //   }
-   // });
     console.log("$scope.item is", $scope.item);
     $scope.podClick = function(e, item) {
       if (e.target.tagName !== 'A' && e.target.parentNode.tagName !== 'A') {
@@ -56,6 +49,7 @@ const name = 'playItem';
 export default angular.module(name, [
   angularMeteor,
   uiRouter,
+  'podControls',
   'player'
 ]).component(name, {
   template,

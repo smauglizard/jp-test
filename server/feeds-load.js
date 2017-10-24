@@ -98,7 +98,7 @@ Meteor.startup(function() {
       }
     };
     feed_test = Feeds.find({}).count();
-    if(feed_test < 250){
+    if(feed_test < 249){
       fetchNext();
     } else {
         console.log("feeds already fetched...");

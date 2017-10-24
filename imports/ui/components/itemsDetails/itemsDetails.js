@@ -13,17 +13,17 @@ class ItemsDetails {
 
     this.feedId = $stateParams.feedId;
     //this.sound = null;
-   // this.perPage = 3;
-   // this.page = 1;
-   // this.searchText = '';
+    this.perPage = 3;
+    this.page = 1;
+    this.searchText = '';
 
-   // this.subscribe('items', function() {
-   //   return [{
-   //     limit: parseInt(this.getReactively('perPage')),
-   //     skip: ((parseInt(this.getReactively('page'))) - 1) * (parseInt(this.getReactively('perPage'))),
-   //     feedId: this.feedId
-   //   }, this.getReactively('searchText') ];
-   // });
+    this.subscribe('items', function() {
+      return [{
+        limit: parseInt(this.getReactively('perPage')),
+        skip: ((parseInt(this.getReactively('page'))) - 1) * (parseInt(this.getReactively('perPage'))),
+        feedId: this.feedId
+      }, this.getReactively('searchText') ];
+    });
  
     this.helpers({
       items() {

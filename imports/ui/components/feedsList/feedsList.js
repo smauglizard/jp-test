@@ -13,13 +13,13 @@ class FeedsList {
 
     $reactive(this).attach($scope);
     
-   // this.subscribe('feeds', function() {
-   //   return [{
-   //   //sort: this.getReactively('sort'),
-   //     limit: parseInt(this.getReactively('perPage')),
-   //     skip: ((parseInt(this.getReactively('page'))) - 1) * (parseInt(this.getReactively('perPage')))
-   //   }, this.getReactively('searchText')];
-   // });
+    this.subscribe('feeds', function() {
+      return [{
+      //sort: this.getReactively('sort'),
+        limit: parseInt(this.getReactively('perPage')),
+        skip: ((parseInt(this.getReactively('page'))) - 1) * (parseInt(this.getReactively('perPage')))
+      }, this.getReactively('searchText')];
+    });
 
     this.helpers({
       feeds() {
