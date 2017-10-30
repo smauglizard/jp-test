@@ -2,7 +2,7 @@ import angular from 'angular';
 import angularMeteor from 'angular-meteor';
 import { Meteor } from 'meteor/meteor';
 import uiRouter from 'angular-ui-router';
-import podControls from '../podControls/podControls';
+import { name as PodControls } from '../podControls/podControls';
 import player from '../player/player.js';
 import { Items } from '../../../api/items';
 import template from './playItem.html';
@@ -49,7 +49,7 @@ const name = 'playItem';
 export default angular.module(name, [
   angularMeteor,
   uiRouter,
-  'podControls',
+  PodControls,
   'player'
 ]).component(name, {
   template,

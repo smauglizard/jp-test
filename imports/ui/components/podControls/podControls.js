@@ -5,7 +5,7 @@ import uiRouter from 'angular-ui-router';
 //import { name as PodControls } from '../podControls/podControls';
 import player from '../player/player.js';
 //import { Items } from '../../../api/items';
-//import template from './podControls.html';
+import template from './podControls.html';
 
 // Remind me to do something about scroll..
 //angular.module('pod').controller('MainCtrl', function($scope, $http, $window, $route, player) {
@@ -20,14 +20,16 @@ import player from '../player/player.js';
 //    return console.log('scroll');
 'use strict';
 
-export default angular.module('podControls', []).directive('podControls', function(player) {
+export default angular.module('PodControls', [angularMeteor,uiRouter,'player'])
+.directive('podControls', ['player',function(player) {
   return {
     restrict: 'E',
+    //template,
     templateUrl: './podControls.html',
-    tempplate: '<pod-controls>',
+    //template: '<pod-controls></pod-controls>',
     replace: true,
-    link: function(scope, elem) {
-      return scope.controlsClick = function(e) {
+    link: function($scope, elem) {
+      return $scope.controlsClick = function(e) {
         console.log(e.layerX, $('.statusbar', elem).width());
         e.preventDefault();
         e.cancelBubble = true;
@@ -36,10 +38,10 @@ export default angular.module('podControls', []).directive('podControls', functi
       };
     }
   };
-});
+}]);
 
-//class PodControls { 
-//  constructor(elem, $reactive, $scope, player){
+//class PodControls {} 
+//  constructor($reactive, $scope, player){
 //    'ngInject';
 // 
 //    $reactive(this).attach($scope); 
@@ -50,12 +52,12 @@ export default angular.module('podControls', []).directive('podControls', functi
 //////    replace: true,
 //////    link: function(scope, elem) {
 //
-//      $scope.controlsClick = function(e) {
-//        console.log(e.layerX, $('.statusbar', elem).width());
+//    $scope.controlsClick = function(e) {
+//        console.log(e.layerX, $('.statusbar', e).width());
 //        e.preventDefault();
 //        e.cancelBubble = true;
-//        player.setPosition(e.layerX / $('.statusbar', elem).width());
-//        //return console.log('controls click');
+//        player.setPosition(e.layerX / $('.statusbar', e).width());
+//        console.log('controls click');
 //      };
 //  }
 //}
@@ -65,7 +67,8 @@ export default angular.module('podControls', []).directive('podControls', functi
 //// create a module
 //export default angular.module(name, [
 //  angularMeteor,
-//  uiRouter
+//  uiRouter,
+//  'player'
 //]).component(name, {
 //  template,
 //  controllerAs: name,
@@ -76,16 +79,16 @@ export default angular.module('podControls', []).directive('podControls', functi
 //  'ngInject';
 // 
 //  $stateProvider.state('podControls', {
-//    url: '/items/:itemId',
-//   // link: function($scope, elem){
-//   //         return  $scope.controlsClick = function(e) {
-//   //                   console.log(e.layerX, $('.statusbar', elem).width());
-//   //                   e.preventDefault();
-//   //                   e.cancelBubble = true;
-//   //                   player.setPosition(e.layerX / $('.statusbar', elem).width());
-//   //     //return console.log('controls click');
-//   //   };
-//   // },
+//   // url: '/items/:itemId',
+//    link: function($scope, elem){
+//            return  $scope.controlsClick = function(e) {
+//                      console.log(e.layerX, $('.statusbar', elem).width());
+//                      e.preventDefault();
+//                      e.cancelBubble = true;
+//                      player.setPosition(e.layerX / $('.statusbar', elem).width());
+//        //return console.log('controls click');
+//      };
+//    },
 //    template: '<pod-controls></pod-controls>'
 //  });
 //}
