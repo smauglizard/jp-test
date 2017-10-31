@@ -25,6 +25,7 @@ class PlayItem {
     //var self = this;
     $reactive(this).attach($scope);
     $scope.url = $stateParams.itemId;
+    //$scope.pod = player.lastPod;
     this.helpers({
       item() {
         console.log("in item function");
@@ -37,6 +38,9 @@ class PlayItem {
         player.podClick(item);
       }
     };
+    console.log("player.lastPod is: ", player.getPod());
+    $scope.pod = player.getPod();
+    console.log("$scope.pod is: ", $scope.pod);
      // return scope.$on('$destroy', function() {
      //   return scope.pod.displayed = false;
      // });

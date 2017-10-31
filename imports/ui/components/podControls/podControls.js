@@ -19,13 +19,13 @@ import template from './podControls.html';
 //    $window.scrollTo($window.scrollX, window.scrollY + 1);
 //    return console.log('scroll');
 'use strict';
-
+const name = 'podControls';
 export default angular.module('PodControls', [angularMeteor,uiRouter,'player'])
 .directive('podControls', ['player',function(player) {
   return {
     restrict: 'E',
-    //template,
-    templateUrl: './podControls.html',
+    template,
+    //templateUrl: `imports/ui/components/${name}/${name}.html`, 
     //template: '<pod-controls></pod-controls>',
     replace: true,
     link: function($scope, elem) {
