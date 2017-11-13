@@ -5,13 +5,13 @@
  font-family: helvetica, arial, verdana, sans-serif;
  font-weight: normal;
  /* prevent background border bleed */
- -webkit-background-clip: padding-box;
+ /*-webkit-background-clip: padding-box;*/
  background-clip: padding-box;
  /* because indeed, fonts do look pretty "fat" otherwise in this case. */
  -moz-osx-font-smoothing: grayscale;
  -webkit-font-smoothing: antialiased;
  /* general font niceness? */
- font-smoothing: antialiased;
+ /* font-smoothing: antialiased; */
  text-rendering: optimizeLegibility;
  min-width: 20em;
  max-width: 30em;
@@ -20,7 +20,8 @@
  overflow: hidden;
  /* just for fun (animate normal / full-width) */
  transition: max-width 0.2s ease-in-out;
- background-image: url(./image/fantasy-2824304_640.jpg)
+ background-image: url(/image/fantasy-2824304_640.jpg);
+ background-size: cover;
 }
 .sm2-bar-ui,
 .sm2-bar-ui .bd a {
@@ -98,7 +99,7 @@
 .sm2-icon-play-pause:hover{
  /*background-image: url(./image/icomoon/entypo-25px-ffffff/PNG/play.png);
  background-image: none, url(./image/icomoon/entypo-25px-ffffff/SVG/play.svg); */
- background-image: url(./image/fantasy-2824304_640.jpg);
+ background-image: url(../public/image/fantasy-2824304_640.jpg);
  background-size: 67.5%;
  background-position: 40% 53%;
 }
@@ -129,6 +130,14 @@
 
 
 }
+
+.statusbar .timing {
+  position: absolute;
+  top: .2rem;
+  right: 1rem;
+  line-height: 0;
+}
+
 .sm2-bar-ui.fixed .bd,
 .sm2-bar-ui.bottom .bd {
  /* display: table; */
@@ -138,7 +147,7 @@
 
 .sm2-bar-ui .sm2-main-controls,
 .sm2-bar-ui .sm2-playlist-drawer {
- background-color: #2288cc;
+ /*background-color: #2288cc;*/
 }
 .sm2-bar-ui .sm2-inline-texture {
  background: transparent;
