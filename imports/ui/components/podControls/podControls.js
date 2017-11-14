@@ -30,10 +30,11 @@ export default angular.module('PodControls', [angularMeteor,uiRouter,'player'])
     replace: true,
     link: function($scope, elem) {
       return $scope.controlsClick = function(e) {
+        console.log("e in controlsClick is:", e);
         console.log(e.layerX, $('.statusbar', elem).width());
         e.preventDefault();
         e.cancelBubble = true;
-        player.setPosition(e.layerX / $('.statusbar', elem).width());
+        player.setPosition((e.layerX || e.offsetX) / $('.statusbar', elem).width());
         return console.log('controls click');
       };
     }
