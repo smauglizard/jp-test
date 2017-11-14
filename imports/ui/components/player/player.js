@@ -189,14 +189,18 @@ export default angular.module('player', [])
         return volume;
       },
       setPosition: function(pos) {
+        console.log("setPosition called, pos is: ", pos);
         var nMsecOffset;
         nMsecOffset = Math.floor(pos * getDurationEstimate(lastSound));
+        console.log("nMsecOffset is: ", nMsecOffset);
         if (!isNaN(nMsecOffset)) {
           nMsecOffset = Math.min(nMsecOffset, lastSound.duration);
         }
         if (!isNaN(nMsecOffset)) {
+          console.log("lastSound.setPosition() called");
           lastSound.setPosition(nMsecOffset);
         }
+        console.log("returning lastSound.resume()");
         return lastSound.resume();
       },
       setFeedSlug: function(slug) {
